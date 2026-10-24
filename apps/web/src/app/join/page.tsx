@@ -1,114 +1,91 @@
 'use client';
 
-import { ArrowUp, Loader2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { api } from '@/lib/api';
+import { useEffect, useMemo, useState } from 'react';
+import { JoinGate } from '@/components/viewer/JoinGate';
+import { ChannelInfo, Stage } from '@/components/viewer/Stage';
+import { ViewerChat } from '@/components/viewer/ViewerChat';
+import { useLive } from '@/lib/useLive';
 
-/** Phone page for the room: judges post into #general and watch the moderator react. */
-export default function Join() {
-  const [name, setName] = useState('');
-  const [text, setText] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState<{ ok: boolean; text: string } | null>(null);
-  const [sent, setSent] = useState(0);
+const NAME_KEY = 'quell-name';
+const MINE_KEY = 'quell-mine';
+
+/**
+ * The viewer page the room opens from the QR code: Twitch-style player and chat,
+ * stacked on phones, side by side on wide screens.
+ */
+export default function Watch() {
+  const live = useLive();
+  const [me, setMe] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+  const [mine, setMine] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    setName(localStorageGet('quell-name') ?? '');
+    setMe(storageGet(NAME_KEY));
+    try {
+      setMine(new Set(JSON.parse(storageGet(MINE_KEY) ?? '[]') as string[]));
+    } catch {
+      // Unreadable history just means no "your message" markers.
+    }
+    setReady(true);
   }, []);
 
-  const send = async () => {
-    if (!text.trim()) return;
-    setBusy(true);
-    setStatus(null);
-    try {
-      await api.ingest(name || 'guest', text);
-      localStorageSet('quell-name', name);
-      setSent((n) => n + 1);
-      setText('');
-      setStatus({ ok: true, text: 'Posted to #general. Watch the screen.' });
-    } catch (e) {
-      setStatus({ ok: false, text: (e as Error).message });
-    } finally {
-      setBusy(false);
-    }
-  };
+  const messages = useMemo(() => live.order.map((id) => live.byId[id]).filter(Boolean), [live.order, live.byId]);
+  const viewers = useMemo(() => new Set(messages.map((m) => m.author)).size + 1, [messages]);
 
-  return (
-    <div className="mx-auto flex min-h-screen max-w-md flex-col px-4 pb-8 pt-8">
-      <div className="flex items-center gap-3">
-        <div className="grid size-12 place-items-center rounded-full bg-live p-[3px]">
-          <div className="grid size-full place-items-center rounded-full bg-[#1d1442] text-[20px]">🚢</div>
-        </div>
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[16px] font-semibold">Shipyard</span>
-            <span className="rounded-[3px] bg-live px-1 text-[10px] font-bold uppercase leading-4 text-white">Live</span>
-          </div>
-          <p className="text-[13px] text-dim">Office hours: shipping v1.0 live 🚢</p>
-        </div>
-      </div>
-
-      <h1 className="mt-8 text-[24px] font-bold tracking-[-0.02em]">Say something in chat</h1>
-      <p className="mt-2 text-[14px] leading-relaxed text-dim">
-        Quell moderates every message live. Try a joke, a question, or something a scammer would say.
-      </p>
-
-      <label className="label mt-8">Display name</label>
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        maxLength={24}
-        placeholder="guest"
-        className="mt-2 h-11 rounded-tw bg-raised px-3 text-[15px] outline-none ring-1 ring-transparent transition focus:bg-bg focus:ring-2 focus:ring-purple"
-      />
-
-      <label className="label mt-5">Message</label>
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        maxLength={300}
-        rows={3}
-        placeholder="Send a message"
-        className="mt-2 min-h-[88px] resize-none rounded-tw bg-raised px-3 py-2.5 text-[15px] leading-relaxed outline-none ring-1 ring-transparent transition placeholder:text-faint focus:bg-bg focus:ring-2 focus:ring-purple"
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            void send();
-          }
+  if (!ready) return <div className="min-h-[100dvh] bg-bg" />;
+  if (!me) {
+    return (
+      <JoinGate
+        onJoin={(name) => {
+          storageSet(NAME_KEY, name);
+          setMe(name);
         }}
       />
-      <div className="mt-2 flex justify-end">
-        <button
-          type="button"
-          onClick={() => void send()}
-          disabled={busy || !text.trim()}
-          className="inline-flex h-10 items-center gap-2 rounded-tw bg-purple px-4 text-[14px] font-semibold text-white transition-colors hover:bg-purple-hover disabled:opacity-40"
-        >
-          {busy ? <Loader2 className="size-4 animate-spin" /> : <ArrowUp className="size-4" />}
-          Chat
-        </button>
-      </div>
+    );
+  }
 
-      {status && (
-        <p className={`mt-3 text-[13px] ${status.ok ? 'text-allow' : 'text-remove'}`}>{status.text}</p>
-      )}
-      {sent > 0 && <p className="tnum mt-auto pt-10 text-center text-[12px] text-faint">{sent} sent</p>}
+  const running = !!live.swarm?.running;
+  return (
+    <div className="flex h-[100dvh] flex-col bg-bg lg:flex-row lg:gap-3 lg:p-3">
+      <div className="shrink-0 lg:min-w-0 lg:flex-1 lg:overflow-y-auto">
+        <Stage live={running} viewers={viewers} metrics={live.metrics} />
+        <ChannelInfo live={running} />
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col lg:w-[360px] lg:flex-none">
+        <ViewerChat
+          messages={messages}
+          me={me}
+          mine={mine}
+          viewers={viewers}
+          onSent={(id) =>
+            setMine((prev) => {
+              const next = new Set(prev).add(id);
+              storageSet(MINE_KEY, JSON.stringify([...next].slice(-200)));
+              return next;
+            })
+          }
+          onLeave={() => {
+            storageSet(NAME_KEY, '');
+            setMe(null);
+          }}
+        />
+      </div>
     </div>
   );
 }
 
-function localStorageGet(key: string): string | null {
+function storageGet(key: string): string | null {
   try {
-    return window.localStorage.getItem(key);
+    return window.localStorage.getItem(key) || null;
   } catch {
     return null;
   }
 }
 
-function localStorageSet(key: string, value: string): void {
+function storageSet(key: string, value: string): void {
   try {
     window.localStorage.setItem(key, value);
   } catch {
-    // Private mode: the name just isn't remembered.
+    // Private browsing: the name just isn't remembered.
   }
 }
