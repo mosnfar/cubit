@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@source '../../node_modules/fumadocs-ui/dist/**/*.js';
+
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --color-fd-primary: hsl(263, 70%, 45%);
+}
+
+.dark {
+  --color-fd-primary: hsl(263, 90%, 78%);
+}

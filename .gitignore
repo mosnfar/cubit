@@ -1,6 +1,9 @@
 node_modules
+.pnpm-store
 dist
 .next
+.source
+apps/docs/out
 *.tsbuildinfo
 .env
 .env.local
