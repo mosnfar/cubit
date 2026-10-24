@@ -111,15 +111,50 @@ export interface SwarmState {
   generating: boolean;
 }
 
+/** One model setup scored on the held-out eval set. */
+export interface EvalResult {
+  id: string;
+  label: string;
+  model: string;
+  /** Community rules sent with each call. */
+  rules: number;
+  done: number;
+  total: number;
+  errors: number;
+  agreement: number | null;
+  wronglyBlocked: number;
+  scamsCaught: number;
+  scamsTotal: number;
+  piiHidden: number;
+  piiTotal: number;
+  latencyP50: number | null;
+  latencyP95: number | null;
+  tokensPerMessage: number | null;
+  /** USD per 1,000 messages; null when the price is unknown. */
+  costPer1k: number | null;
+}
+
+export interface EvalRun {
+  id: string;
+  startedAt: number;
+  finishedAt?: number;
+  status: 'preparing' | 'running' | 'done' | 'error';
+  size: number;
+  results: EvalResult[];
+  error?: string;
+}
+
 export interface LiveState {
   messages: ModeratedMessage[];
   rules: Rule[];
   metrics: Metrics;
   swarm: SwarmState;
   task: { model: string; fingerprint: string };
+  evaluation: EvalRun | null;
 }
 
 export type StreamEvent =
+  | { type: 'eval'; data: EvalRun }
   | { type: 'message'; data: ModeratedMessage }
   | { type: 'rule'; data: Rule }
   | { type: 'rule-removed'; data: { id: string } }

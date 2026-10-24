@@ -19,11 +19,12 @@ const MAX_RULES_IN_PROMPT = 40;
 /** How long an identical message reuses an earlier decision. */
 const DUPLICATE_WINDOW_MS = 10 * 60_000;
 
-interface Judgement {
+export interface Judgement {
   decision: ModDecision;
   display: string;
   safetyNet: boolean;
   latencyMs: number;
+  usage: { tokensIn: number; tokensOut: number; costUsd: number | null };
 }
 
 /**
@@ -147,13 +148,26 @@ export class ModerationService {
     }
   }
 
-  private async judge(m: ChatMessage): Promise<Judgement> {
+  /**
+   * Judges a message for evaluation only: never recorded, so it can't train the
+   * task or leak into Mubit's test cases. Can run the same prompt on another model.
+   */
+  evaluate(m: ChatMessage, opts: Omit<JudgeOptions, 'recorded'>): Promise<Judgement> {
+    return new Promise((resolve, reject) => {
+      this.schedule(() => this.judge(m, { ...opts, recorded: false }).then(resolve, reject));
+    });
+  }
+
+  private async judge(m: ChatMessage, opts: JudgeOptions = {}): Promise<Judgement> {
+    const recorded = opts.recorded ?? true;
     const detected = prescan(m.text);
-    const recent = this.store
-      .recent(12)
-      .filter((r) => r.channel === m.channel && r.id !== m.id && r.createdAt <= m.createdAt)
-      .slice(-3)
-      .map((r) => `${r.author}: ${r.text}`);
+    const recent =
+      opts.recent ??
+      this.store
+        .recent(12)
+        .filter((r) => r.channel === m.channel && r.id !== m.id && r.createdAt <= m.createdAt)
+        .slice(-3)
+        .map((r) => `${r.author}: ${r.text}`);
 
     const payload = {
       community: COMMUNITY,
@@ -162,23 +176,50 @@ export class ModerationService {
       recent,
       message: m.text,
       detected,
-      community_rules: this.store.rules.slice(-MAX_RULES_IN_PROMPT).map((r) => r.text),
+      community_rules: opts.rules ?? this.store.rules.slice(-MAX_RULES_IN_PROMPT).map((r) => r.text),
     };
+    const messages = [
+      { role: 'system' as const, content: SYSTEM_PROMPT },
+      { role: 'user' as const, content: JSON.stringify(payload) },
+    ];
+    const headers = recorded ? undefined : MubitService.UNRECORDED;
 
     const started = Date.now();
-    const res = await this.mubit.client.chat.completions.create({
-      model: TASK_MODEL,
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: JSON.stringify(payload) },
-      ],
-      response_format: RESPONSE_FORMAT,
-      // Settings don't split a Mubit task; this keeps a reasoning model fast enough for chat.
-      reasoning_effort: 'none' as 'low',
-    });
+    let res;
+    if (opts.openRouterModel) {
+      // Same prompt on an open model via OpenRouter (still through Mubit).
+      res = await this.mubit.openrouter.chat.completions
+        .create({ model: opts.openRouterModel, messages, response_format: RESPONSE_FORMAT, temperature: 0 }, { headers })
+        .catch(() =>
+          // Not every provider supports strict schemas; fall back to plain JSON mode.
+          this.mubit.openrouter.chat.completions.create(
+            { model: opts.openRouterModel!, messages, response_format: { type: 'json_object' }, temperature: 0 },
+            { headers },
+          ),
+        );
+    } else {
+      res = await this.mubit.client.chat.completions.create(
+        {
+          model: TASK_MODEL,
+          messages,
+          response_format: RESPONSE_FORMAT,
+          // Settings don't split a Mubit task; this keeps a reasoning model fast enough for chat.
+          reasoning_effort: 'none' as 'low',
+        },
+        { headers },
+      );
+    }
     const latencyMs = Date.now() - started;
-    this.store.bump('tokensIn', res.usage?.prompt_tokens ?? 0);
-    this.store.bump('tokensOut', res.usage?.completion_tokens ?? 0);
+    const usage = {
+      tokensIn: res.usage?.prompt_tokens ?? 0,
+      tokensOut: res.usage?.completion_tokens ?? 0,
+      // OpenRouter reports what the call cost; OpenAI does not.
+      costUsd: (res.usage as { cost?: number } | undefined)?.cost ?? null,
+    };
+    if (recorded) {
+      this.store.bump('tokensIn', usage.tokensIn);
+      this.store.bump('tokensOut', usage.tokensOut);
+    }
 
     const decision = parseDecision(res.choices[0]?.message?.content ?? '', m.text);
 
@@ -195,8 +236,19 @@ export class ModerationService {
     }
 
     const display = decision.action === 'redact' ? mask(m.text, decision.redact) : m.text;
-    return { decision, display, safetyNet, latencyMs };
+    return { decision, display, safetyNet, latencyMs, usage };
   }
+}
+
+export interface JudgeOptions {
+  /** Recorded calls are what Mubit trains on. Defaults to true. */
+  recorded?: boolean;
+  /** Rules to send instead of the community's current ones. */
+  rules?: string[];
+  /** Preceding chat to send instead of the live channel's. */
+  recent?: string[];
+  /** Run the same prompt on this OpenRouter model instead of the teacher. */
+  openRouterModel?: string;
 }
 
 function parseDecision(raw: string, text: string): ModDecision {

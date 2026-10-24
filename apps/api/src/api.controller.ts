@@ -20,6 +20,7 @@ import { CHANNEL } from './core/community';
 import { EventsService } from './core/events.service';
 import { StoreService } from './core/store.service';
 import { CorrectionsService } from './moderation/corrections.service';
+import { EvalService } from './moderation/eval.service';
 import { TASK_FINGERPRINT, TASK_MODEL } from './moderation/frozen';
 import { MetricsService } from './moderation/metrics.service';
 import { ModerationService } from './moderation/moderation.service';
@@ -41,6 +42,7 @@ export class ApiController {
     private readonly corrections: CorrectionsService,
     private readonly metrics: MetricsService,
     private readonly swarm: SwarmService,
+    private readonly evals: EvalService,
   ) {}
 
   @Get('state')
@@ -51,6 +53,7 @@ export class ApiController {
       metrics: this.metrics.compute(),
       swarm: this.swarm.snapshot,
       task: { model: TASK_MODEL, fingerprint: TASK_FINGERPRINT },
+      evaluation: this.evals.latest,
     };
   }
 
@@ -101,6 +104,12 @@ export class ApiController {
   @Post('swarm')
   updateSwarm(@Body() body: Partial<Pick<SwarmState, 'running' | 'rate' | 'scamWave'>>) {
     return this.swarm.update(body);
+  }
+
+  /** Scores GPT before and after corrections, and an untrained open model, on the held-out set. */
+  @Post('eval')
+  evaluate() {
+    return this.evals.start();
   }
 
   @Post('swarm/raid')

@@ -16,5 +16,13 @@ export class MubitService {
     timeout: 60_000,
   });
 
+  /** OpenRouter models through Mubit (the OpenRouter key lives in the Mubit project). */
+  readonly openrouter = new OpenAI({
+    apiKey: config.mubitKey,
+    baseURL: `${config.mubitBase}/compat/openrouter/v1`,
+    maxRetries: 3,
+    timeout: 60_000,
+  });
+
   static readonly UNRECORDED = { 'x-middleware-record': 'off' } as const;
 }

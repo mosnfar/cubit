@@ -56,7 +56,7 @@ export default function ModView() {
         />
         <div className="flex min-h-0 flex-col gap-2.5">
           <StreamHeader live={!!live.swarm?.running} chatters={chatters} since={since} />
-          <LearningPanel metrics={live.metrics} rules={live.rules} task={live.task} />
+          <LearningPanel metrics={live.metrics} rules={live.rules} task={live.task} evaluation={live.evaluation} />
         </div>
         <Chat
           messages={messages}

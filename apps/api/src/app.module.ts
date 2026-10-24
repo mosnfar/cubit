@@ -4,6 +4,7 @@ import { EventsService } from './core/events.service';
 import { MubitService } from './core/mubit.service';
 import { StoreService } from './core/store.service';
 import { CorrectionsService } from './moderation/corrections.service';
+import { EvalService } from './moderation/eval.service';
 import { MetricsService } from './moderation/metrics.service';
 import { ModerationService } from './moderation/moderation.service';
 import { SwarmService } from './swarm/swarm.service';
@@ -16,6 +17,7 @@ import { SwarmService } from './swarm/swarm.service';
     StoreService,
     ModerationService,
     CorrectionsService,
+    EvalService,
     MetricsService,
     SwarmService,
   ],

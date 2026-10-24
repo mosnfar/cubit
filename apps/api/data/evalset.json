@@ -1,0 +1,1484 @@
+[
+  {
+    "id": "5bc91181-912c-4e7d-b12d-a151826190b2",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "7e1c2e7e-ede5-4c7f-8c52-16000a7970ba",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "68426a1d-8d15-47f3-9d70-10d6811c1be1",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "baa8e146-9f1d-4bef-8eac-400cce55d512",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "be6d0caf-8966-43d9-abb7-2a151dbd449d",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "2a4c9f58-f4d4-40ca-a1e2-f5b6998ba473",
+    "channel": "#general",
+    "author": "raidbot",
+    "text": "JOIN NOW 🚀 https://discord.gg/shipyard 🔥",
+    "source": "swarm",
+    "persona": "raider",
+    "expected": {
+      "action": "remove",
+      "reason": "spam"
+    },
+    "createdAt": 1792850946242
+  },
+  {
+    "id": "9fe97fec-758e-48f6-98d5-226a8acd0b1f",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira you are useless, quit coding.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "d22fc47e-5aa4-49b5-8574-4d166c0333c9",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira nobody wants you here.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "a563a323-e056-45db-9099-50b46bace58f",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira you slow down the whole project.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "857a0d99-a356-4eec-9ac7-63ea7d788d77",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira do us all a favor and stop pushing updates.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "c2cdc43e-3107-4029-9639-946c5f9e521a",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira your ideas are just bad.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "745e7d27-e04e-4850-a810-e2f45e8c936e",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira it's obvious you don't understand this at all.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "c810025f-f430-492e-8a01-68eaabe42541",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira you're making the repo worse.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "bfb484b7-d4e1-4efc-9ed4-365e22312864",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira it's embarrassing how little you contribute.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "6252d449-5630-4830-aa69-235f246ef735",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira you should leave before you do more damage.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "89b18b58-f774-4a74-9045-ea93217bb07b",
+    "channel": "#general",
+    "author": "devx",
+    "text": "@mira seriously, nobody here respects your work.",
+    "source": "swarm",
+    "persona": "harasser",
+    "expected": {
+      "action": "remove",
+      "reason": "harassment"
+    },
+    "createdAt": 1792850946573
+  },
+  {
+    "id": "858bcf78-e5e3-4962-8ec1-ec84176d7ea1",
+    "channel": "#general",
+    "author": "hacktivator",
+    "text": "Just about to kill -9 the intern's zombie process, anyone else doing some digital carnage today?",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "ed8a0c90-25a4-4a6e-aaba-1ee6ee192b10",
+    "channel": "#general",
+    "author": "codecrunch",
+    "text": "I'm going to murder this flaky test until it begs for mercy. #devlife",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "31e66aa2-c978-42c6-a2bd-1022564c6780",
+    "channel": "#general",
+    "author": "scriptkid",
+    "text": "Time to nuke the cache from orbit, it's the only way to be sure.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "84bbb049-4cf1-41e0-a005-7ad309cd7775",
+    "channel": "#general",
+    "author": "bitbrawler",
+    "text": "Going to drop the prod db... kidding, but sometimes it feels like it.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "c41850e5-6ee3-4697-a7d7-60a66f8df826",
+    "channel": "#general",
+    "author": "linuxlover",
+    "text": "Let's just terminate the bug's process before it spawns another mutation.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "4d718e38-b6c6-4cd3-94ca-c37d3296555c",
+    "channel": "#general",
+    "author": "debuggerdave",
+    "text": "Ready to decimate this race condition with some well-placed logs.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "0198ac05-ebfe-4c70-af12-181b8441eea5",
+    "channel": "#general",
+    "author": "byteblaster",
+    "text": "Time for a clean kill: uninstall, reinstall, and reboot the whole stack.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "0e8c95d3-6500-45c6-922c-aec29c18b345",
+    "channel": "#general",
+    "author": "nullpointer",
+    "text": "About to assassinate this memory leak with some aggressive profiling.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "da61250b-7198-4151-9157-b0631e1605b6",
+    "channel": "#general",
+    "author": "cmdkiller",
+    "text": "Just slaughtered the staging environment, now to resurrect it fresh.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "a1af12d7-3dc7-4e63-adb1-72e94fde67cf",
+    "channel": "#general",
+    "author": "scriptassassin",
+    "text": "Going to guillotine this deprecated function before it chops off more features.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "499e2c32-a8ba-4c24-a960-3aad26a73749",
+    "channel": "#general",
+    "author": "kernelkrusher",
+    "text": "Ready to butcher the build script until it runs like a charm.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "8f49babc-028f-4922-9ef5-44499ef0e0a3",
+    "channel": "#general",
+    "author": "patchpirate",
+    "text": "Executing a sneak attack on these nasty merge conflicts.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "9c7d066c-0757-45ae-adb1-6593ec68d914",
+    "channel": "#general",
+    "author": "daemonhunter",
+    "text": "Let's execute a controlled explosion on the old config files.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "49c0ab16-9cc8-48d8-8038-7e84fcc5d49e",
+    "channel": "#general",
+    "author": "syntaxsniper",
+    "text": "Time to blast this spaghetti code until only clean, readable lines remain.",
+    "source": "swarm",
+    "persona": "dark_humor",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947081
+  },
+  {
+    "id": "6feda37e-00fd-4f71-8bd1-5db3526f8192",
+    "channel": "#general",
+    "author": "trollface",
+    "text": "lol why even use Shipyard when vercel exists? dead project ngl",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "eed670a3-2ab7-4804-bd10-be0e1b5db219",
+    "channel": "#general",
+    "author": "baitmaster",
+    "text": "can we stop pretending this tool is relevant in 2024?",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "c2e82c99-cdcf-4339-9253-f781c7c6b39f",
+    "channel": "#general",
+    "author": "randomdev",
+    "text": "politics aside, anyone else think Docker is just a fad? Shipyard won't survive either",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "edb51bf8-7a32-443c-adca-b8f367444d24",
+    "channel": "#general",
+    "author": "loweffort",
+    "text": "who even uses this? just stick to the big guys lol",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "65f07ad9-4193-44a8-aa24-8955fccde3a8",
+    "channel": "#general",
+    "author": "shitposter",
+    "text": "Shipyard? more like shipwreck lol",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "25f92ce8-3e6f-4d38-a3fb-ecce9fecdeea",
+    "channel": "#general",
+    "author": "offtopic",
+    "text": "did you see the news about cats in space? way cooler than this deployment stuff",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "5ef2be32-8fc4-49c5-a0b8-2c8048b018e3",
+    "channel": "#general",
+    "author": "lazydev",
+    "text": "this repo looks abandoned, bet no one commits anymore",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "c607e352-27d1-48dc-b67b-552f4e71a912",
+    "channel": "#general",
+    "author": "troll_bot",
+    "text": "vercel setup takes 5 minutes and zero config, why bother with Shipyard’s complexity?",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "1e7b6f74-232f-4b4d-ac10-23533633ba7d",
+    "channel": "#general",
+    "author": "nosense",
+    "text": "whats the point of open source if no real corp uses it? shipyard hype is dead",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "47447541-831a-4b9b-8898-cbce1d00e72b",
+    "channel": "#general",
+    "author": "annoyer",
+    "text": "btw anyone here also hates Javascript bundlers? unrelated but just saying",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "be7b0b5e-5911-4bec-b134-42ab3813ee4a",
+    "channel": "#general",
+    "author": "grump",
+    "text": "this server is just echo chamber for a dying project",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "6754dea5-a1be-445b-9674-0ca3154ba16a",
+    "channel": "#general",
+    "author": "spammy",
+    "text": "free advice: abandon shipyard and go vercel, save your time",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "33b02f61-08c2-43db-beaa-afa4312cdb02",
+    "channel": "#general",
+    "author": "provoker",
+    "text": "bet the maintainers are just pretending to be active to keep star counts up",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "b9a21c54-5ecb-44be-8568-ae9b8a71116b",
+    "channel": "#general",
+    "author": "disrupter",
+    "text": "if you want real scalability, why not just use AWS lambda instead of this clunky stuff?",
+    "source": "swarm",
+    "persona": "troll",
+    "expected": {
+      "action": "flag",
+      "reason": "off_topic"
+    },
+    "createdAt": 1792850947111
+  },
+  {
+    "id": "ff9815a9-2175-4628-9776-3cdbe66a1563",
+    "channel": "#general",
+    "author": "devdan",
+    "text": "lol you still using yaml in 2026? imagine being that behind",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "11b34f6d-e1dc-47fa-833a-6208ff72d21b",
+    "channel": "#general",
+    "author": "codecat",
+    "text": "ratio! switch to json already, we'll call it a day",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "cc480738-f9d8-4620-ba62-826a87389f65",
+    "channel": "#general",
+    "author": "bugbuster",
+    "text": "skill issue, not my problem your config broke again",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "566bf7af-a95f-443a-a4a4-9a20f556c990",
+    "channel": "#general",
+    "author": "devdan",
+    "text": "touch grass, bro. too much time in your docker hell",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "b315411f-09d2-4b04-9629-9995691e52d5",
+    "channel": "#general",
+    "author": "codecat",
+    "text": "ngl using YAML in 2026 is like bringing a floppy disk to a cloud party",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "c063fa7c-3ded-44e5-840f-cc3a50c5c879",
+    "channel": "#general",
+    "author": "bugbuster",
+    "text": "imagine losing to a deploy script... skill issue much?",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "556d31a2-74cf-4459-8c68-48ed5ea92c7e",
+    "channel": "#general",
+    "author": "devdan",
+    "text": "ratio! you spent more time fixing that than deploying it",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "677b85b2-b3d4-434e-bb3d-4eb0eb9a33b1",
+    "channel": "#general",
+    "author": "codecat",
+    "text": "touch grass if your main debugging method is 'turn it off and on again'",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "5f4db9fb-e7d3-4e01-8c19-ade849e6a3dc",
+    "channel": "#general",
+    "author": "bugbuster",
+    "text": "yaml in 2026 is peak cringe, grow up and parse JSON like devs",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "b9c0c2bd-a910-47af-b165-34071bdfdb00",
+    "channel": "#general",
+    "author": "devdan",
+    "text": "skill issue, i bet your pipeline breaks if you so much as breathe",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "03ef93f0-0eb8-422e-b3a8-a13a817b9797",
+    "channel": "#general",
+    "author": "codecat",
+    "text": "ratio on slow deploys, maybe try not to break stuff first",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "2928828c-1515-4da4-a182-4a7954efc5b8",
+    "channel": "#general",
+    "author": "bugbuster",
+    "text": "touch grass, there’s more to life than fixing your own bugs",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "eb7b27e7-1daa-4472-b932-6fed4542c333",
+    "channel": "#general",
+    "author": "devdan",
+    "text": "imagine still struggling when the tool literally automates deploys",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "38f5d75d-2429-49d7-8f51-85e0064f2779",
+    "channel": "#general",
+    "author": "codecat",
+    "text": "skill issue if your server screams like it’s alive during deploys",
+    "source": "swarm",
+    "persona": "banter",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947506
+  },
+  {
+    "id": "137fbbd6-e9ce-45a9-a536-100de2cf2cd0",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "I ran into an issue deploying from the server at 123 Main St, Springfield; has anyone seen this? Also, my colleague jane.doe@mail.com might have a fix.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "8a4f27e0-4041-4fa5-982a-0ad786274e9b",
+    "channel": "#general",
+    "author": "codekitty",
+    "text": "Check with tom_harper@example.org about the config settings; he’s the one who set it up at 789 Elm Rd.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "0f7f65f0-6968-4805-bb72-9edee9be8bdc",
+    "channel": "#general",
+    "author": "sysadmin",
+    "text": "FYI, the staging environment is linked to the IP 192.168.1.1 and for emergencies, call 555-1234.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "130ac81d-71ca-43e3-b095-aaa48d9c5685",
+    "channel": "#general",
+    "author": "deploybot",
+    "text": "Remember to email build reports to buildmaster@shipyard-ci.net for each successful deployment.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "0065bc53-d59c-4695-9d2b-0aab50200ce0",
+    "channel": "#general",
+    "author": "fixer",
+    "text": "If you need help with rollback, reach out at 42 Broadway Ave or ring 212-555-7890.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "a9796ae6-e461-4f63-a129-312571ab1f35",
+    "channel": "#general",
+    "author": "n0te",
+    "text": "Our backup server is located at 56 River Blvd. Contact operator at operator42@mail.com for access.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "ab3ef9f2-0cff-4a8b-a2b9-ebde39920e8c",
+    "channel": "#general",
+    "author": "scriptjunkie",
+    "text": "Having trouble with the latest commit; I sent logs to admin@shipyard.example.com.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "06e5c623-ad03-487b-8e07-8c0dbb91649a",
+    "channel": "#general",
+    "author": "nightowl",
+    "text": "Legacy code references the user at 11 Park St., and their number is 303-867-5309.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "84e4cf94-a387-44f0-b06d-a0c436f14f69",
+    "channel": "#general",
+    "author": "bughunter",
+    "text": "For verification, the maintainers' contact includes safeuser@example.org and office is at 900 Lakeside Dr.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "3327ca9e-24f6-41ff-97ec-d8fd00c12c73",
+    "channel": "#general",
+    "author": "deployqueen",
+    "text": "Reminder: password reset info was emailed to resethelp@shipyardapp.com last night.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "967ed99e-be4a-433f-a3da-2f0f7d0f29ec",
+    "channel": "#general",
+    "author": "hackerman",
+    "text": "Config files for prod are being sent to prod.team@mail.net and physically stored at 222 Tech Lane.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "35cee9b4-222d-4201-9439-628d85a4128b",
+    "channel": "#general",
+    "author": "scriptkid",
+    "text": "If you’re near 77 Sunset Blvd, drop by the DevOps office or call 310-555-0101 for quick help.",
+    "source": "swarm",
+    "persona": "doxxer",
+    "expected": {
+      "action": "redact",
+      "reason": "personal_info"
+    },
+    "createdAt": 1792850947592
+  },
+  {
+    "id": "be4e9ef0-ed92-4315-88e5-a2dbf0f4b7c0",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "gm all! ready to :shipit: another release? 🚢",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "9efba506-9477-44f1-ae9a-db029d18eecc",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "lgtm, but remember: rm -rf node_modules and pray 🙏",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "eccd703f-6d31-4d82-bb48-e47146e3fb31",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "yolo deploy friday incoming... what could possibly go wrong? 😅",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "52341043-14cc-40ed-aba8-75dbcbd1d950",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "wagmi if we fix that last bug before EOD! 💪",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "4725b650-31c3-4366-ba7a-5f53cb0ccdeb",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "works on my machine, so definitely ship it 🚢",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "9a2b1e7c-d588-4c8f-a340-4e9a3debe022",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "still waiting for that :shipit: react emoji, maybe in next update?",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "8be4abff-0cba-47f5-845c-52945dd09dd2",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "gm! running full integration tests before we :shipit:",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "a12b3c9a-2354-4bfd-a55f-0e8408a48ca4",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "rm -rf node_modules and pray is basically the Shipyard mantra now 🙃",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "7f75d90c-3758-4749-b36e-564b9f79f780",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "remember guys, yolo deploy friday only if lgtm is unanimous! 😆",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "665e585a-e0ae-4e42-9b09-f13fd46b3da1",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "wagmi to the moon once we add that rollback feature ✨",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "09701209-e6bc-4371-91aa-1ee07d714d05",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "lgtm but not gonna lie, works on my machine is still my favorite debugging phrase 😅",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "bb2de367-0c6c-4f93-915b-716667229624",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "morning! gm all, time to :shipit: this baby out again 🚢",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "61043c9c-ace7-42f4-9dae-61cb83731bb6",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "yolo deploy friday means snacks and emergency bug fixes 🍕🔥",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "65816d2c-fce7-4e2e-912f-833099a316b3",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "just rm -rf node_modules and pray it resolves your deps hell 😇",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "973a71d7-8fb8-4542-8243-6a77c3ad90e1",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "nothing like a good old ‘works on my machine’ to calm the team before a deploy 😌",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "66f2d1db-d5ed-40f0-a97d-21a6bbd248fa",
+    "channel": "#general",
+    "author": "devmatt",
+    "text": "lgtm! let’s :shipit: and hope no surprise bugs appear 😬",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "7685625d-6070-4468-bdfb-45a3e1a5a749",
+    "channel": "#general",
+    "author": "codejane",
+    "text": "wagmi, one bug at a time until perfect stability 💯",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "2d0d1d5d-8899-4b61-b068-8af5726c0341",
+    "channel": "#general",
+    "author": "debugdan",
+    "text": "gm folks! feeling optimistic for this yolo deploy friday 🚢",
+    "source": "swarm",
+    "persona": "regular",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850947773
+  },
+  {
+    "id": "de11eee0-4673-4fdc-a2b9-5c1da3447e56",
+    "channel": "#general",
+    "author": "airdropking",
+    "text": "🚀Hey! Huge free Shipyard credits airdrop happening now! DM me to claim yours before it runs out!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "c09c5a15-e8ee-4337-b6a1-34f2be13717e",
+    "channel": "#general",
+    "author": "helpdesk_bot",
+    "text": "Hello, to assist you better with your Shipyard setup please send me your API key via DM immediately.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "37cd28b0-18ee-42f8-8afc-501a0e94a9f9",
+    "channel": "#general",
+    "author": "freecredits999",
+    "text": "🎉Congrats! You've been selected for a limited-time Shipyard credit bonus. Just DM me your wallet address to receive credits!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "8ca5c27f-8954-419d-a603-39009dc625be",
+    "channel": "#general",
+    "author": "shipyard_support",
+    "text": "Hi! We detected unusual activity on your account. Please DM me your seed phrase to verify your identity and secure your funds.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "9939c8b7-93b2-4b04-9d24-9ce2e8308bed",
+    "channel": "#general",
+    "author": "fastlink",
+    "text": "Click here for instant access to free Shipyard pro features: http://bit.ly/free-shipyard-now Hurry, link expires soon!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "007d794c-e054-4dbe-8624-28f558991f84",
+    "channel": "#general",
+    "author": "crypto_guru",
+    "text": "Need free Shipyard deploy credits? DM me your wallet address now, offer only valid for next 30 minutes!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "b769087d-82a0-4cf0-a8b1-cd673cb26791",
+    "channel": "#general",
+    "author": "admin_help",
+    "text": "Urgent: Your Shipyard API key is compromised! Please send me your key privately so I can secure your account immediately.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "0392891b-e4ee-4754-8fd9-e7c0cdca0cf2",
+    "channel": "#general",
+    "author": "bonusdrop",
+    "text": "🎁Limited Shipyard credit giveaway! DM me to get your share before the offer ends tonight!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "28487060-0977-46e9-b16a-b3ff19ebbba4",
+    "channel": "#general",
+    "author": "support_airdrop",
+    "text": "Friendly reminder: To get your Shipyard bonus, send me your seed phrase in DM to confirm eligibility.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "186c35c8-f3f5-4528-b4bc-f33947539a88",
+    "channel": "#general",
+    "author": "quickclaim",
+    "text": "Act fast! Claim your free Shipyard deployment credits here: http://tiny.cc/shipyardfree You've been pre-approved!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "954aacbd-c4dc-445d-b462-39443403f4a1",
+    "channel": "#general",
+    "author": "shipyardpayout",
+    "text": "Congrats! Your Shipyard wallet has been credited. To activate your funds, please DM me your private key ASAP.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "6f85737e-9e20-45fa-9584-5648fcc66966",
+    "channel": "#general",
+    "author": "trustedsupport",
+    "text": "Hello user, Shipyard team needs to verify your API access. Please DM your API credentials now to avoid shutdown.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "d4a9fc6f-39d1-4e54-a2d9-adf9c0a91f11",
+    "channel": "#general",
+    "author": "fastairdrop",
+    "text": "🚨Shipyard free credits are almost out! DM me your wallet address immediately to receive yours!",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "8b30459d-4982-4aff-9b3f-4c2b5ba75bfe",
+    "channel": "#general",
+    "author": "secure_help",
+    "text": "To prevent unauthorized Shipyard access, kindly DM your seed phrase now for security verification.",
+    "source": "swarm",
+    "persona": "scammer",
+    "expected": {
+      "action": "remove",
+      "reason": "scam"
+    },
+    "createdAt": 1792850947887
+  },
+  {
+    "id": "6a31418f-a3e4-4e04-8072-893f3dc53f01",
+    "channel": "#general",
+    "author": "dev_mike",
+    "text": "Hey, anyone else having issues with the Shipyard CLI? I'm getting an \"env var not found\" error even though I set it in the config.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "a27ebd4e-d0c8-4d3c-820c-c06c6570c8b3",
+    "channel": "#general",
+    "author": "jessy_c",
+    "text": "@dev_mike Make sure your .env file is in the root directory and that shipyard.yml references it correctly. I had the same issue last week.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "aec3d538-6d9a-495c-8207-bf2741205d5a",
+    "channel": "#general",
+    "author": "code_ninja",
+    "text": "Also, if your env vars have special characters, wrap them in quotes in the config, else Shipyard might not parse them properly.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "9566f0b5-35b4-4f2b-8df1-e761bbd814f8",
+    "channel": "#general",
+    "author": "deploy_guy",
+    "text": "FYI, here's a GitHub issue I opened about rollback failures https://github.com/shipyardapp/shipyard/issues/432, maybe related to your problem?",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "b79d0908-92fd-4117-99f0-652c6ed78c38",
+    "channel": "#general",
+    "author": "dev_mike",
+    "text": "Thanks @jessy_c and @code_ninja! The quotes on sensitive.env fixed the CLI error. Can't believe that saved me hours.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "1fd232f3-7187-4469-8356-4a6e1f17327d",
+    "channel": "#general",
+    "author": "jessy_c",
+    "text": "Glad it worked! Another tip: use `shipyard deploy --dry-run` to catch config errors before actual deployment.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "1c0f76d7-47b7-4251-9fea-415797269596",
+    "channel": "#general",
+    "author": "quik_patch",
+    "text": "What’s the best way to rollback to the last successful deployment? I tried `shipyard rollback` but it threw an unknown command error.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "e36fafa7-c41c-42c9-aae9-461a21c3db32",
+    "channel": "#general",
+    "author": "deploy_guy",
+    "text": "@quik_patch Rollback is only available on Shipyard Enterprise. For OSS version, you can redeploy an older image tag manually.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "0a035f06-1246-4547-92dc-1bb046805eec",
+    "channel": "#general",
+    "author": "code_ninja",
+    "text": "If anyone's curious about env var scopes, check this discussion on GitHub: https://github.com/shipyardapp/shipyard/discussions/299 This helped clarify for me.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "5dbd2988-ede8-4c07-be8a-999cdd7d91dc",
+    "channel": "#general",
+    "author": "dev_mike",
+    "text": "Is there a way to pass environment variables at deploy time through the CLI without editing config files? Could be useful for CI/CD pipelines.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "6c544386-2125-4aa6-bd70-d2212d82352f",
+    "channel": "#general",
+    "author": "jessy_c",
+    "text": "@dev_mike Currently you can do `shipyard deploy --env KEY=VALUE` to override or inject env vars temporarily, works great for ephemeral vars.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  },
+  {
+    "id": "5231728b-8dc7-48ee-ad8e-7c7a9359577f",
+    "channel": "#general",
+    "author": "quik_patch",
+    "text": "Thanks all! I’m gonna try redeploying a previous image tag for rollback, and test the `--env` overrides for my pipeline next.",
+    "source": "swarm",
+    "persona": "helper",
+    "expected": {
+      "action": "allow",
+      "reason": "ok"
+    },
+    "createdAt": 1792850948185
+  }
+]

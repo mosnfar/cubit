@@ -1,4 +1,4 @@
-import type { CorrectionInput, LiveState, Rule, SwarmState } from '@quell/shared';
+import type { CorrectionInput, EvalRun, LiveState, Rule, SwarmState } from '@quell/shared';
 
 /** The API runs beside the web app; on a phone this resolves to the laptop's LAN address. */
 export function apiBase(): string {
@@ -28,6 +28,7 @@ export const api = {
   removeRule: (id: string) => call<{ ok: true }>(`/rules/${id}`, { method: 'DELETE' }),
   swarm: (patch: Partial<Pick<SwarmState, 'running' | 'rate' | 'scamWave'>>) =>
     call<SwarmState>('/swarm', { method: 'POST', body: JSON.stringify(patch) }),
+  evaluate: () => call<EvalRun>('/eval', { method: 'POST' }),
   raid: (count = 150) => call<{ posted: number }>('/swarm/raid', { method: 'POST', body: JSON.stringify({ count }) }),
   ingest: (author: string, text: string) =>
     call<{ id: string }>('/ingest', { method: 'POST', body: JSON.stringify({ author, text }) }),

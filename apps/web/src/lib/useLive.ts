@@ -15,6 +15,7 @@ export interface Live {
   metrics: Metrics | null;
   swarm: SwarmState | null;
   task: LiveState['task'] | null;
+  evaluation: LiveState['evaluation'];
   lastReplay: { ruleId: string; sent: number; at: number } | null;
 }
 
@@ -32,6 +33,7 @@ const initial: Live = {
   metrics: null,
   swarm: null,
   task: null,
+  evaluation: null,
   lastReplay: null,
 };
 
@@ -49,8 +51,11 @@ function reduce(s: Live, a: Action): Live {
         metrics: a.state.metrics,
         swarm: a.state.swarm,
         task: a.state.task,
+        evaluation: a.state.evaluation,
       };
     }
+    case 'eval':
+      return { ...s, evaluation: a.data };
     case 'connected':
       return { ...s, connected: a.value };
     case 'message': {
@@ -96,7 +101,7 @@ export function useLive(): Live {
       source = new EventSource(`${apiBase()}/stream`);
       source.onopen = () => dispatch({ type: 'connected', value: true });
       source.onerror = () => dispatch({ type: 'connected', value: false });
-      for (const type of ['message', 'rule', 'rule-removed', 'metrics', 'swarm', 'replay'] as const) {
+      for (const type of ['message', 'rule', 'rule-removed', 'metrics', 'swarm', 'replay', 'eval'] as const) {
         source.addEventListener(type, (e) => {
           dispatch({ type, data: JSON.parse((e as MessageEvent).data) } as StreamEvent);
         });

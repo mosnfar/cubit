@@ -3,8 +3,9 @@
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUpRight, Brain, X } from 'lucide-react';
-import type { Metrics, Rule } from '@quell/shared';
+import type { EvalRun, Metrics, Rule } from '@quell/shared';
 import { api } from '@/lib/api';
+import { Benchmark } from './Benchmark';
 import { Panel } from './primitives';
 
 const pct = (x: number | null) => (x === null ? '—' : `${Math.round(x * 100)}%`);
@@ -14,10 +15,12 @@ export function LearningPanel({
   metrics,
   rules,
   task,
+  evaluation,
 }: {
   metrics: Metrics | null;
   rules: Rule[];
   task: { model: string; fingerprint: string } | null;
+  evaluation: EvalRun | null;
 }) {
   const m = metrics;
   return (
@@ -50,6 +53,8 @@ export function LearningPanel({
           <Stat label="Latency p50" value={ms(m?.latencyP50 ?? null)} />
           <Stat label="Duplicates" value={m ? String(m.cached) : '—'} />
         </dl>
+
+        <Benchmark run={evaluation} />
 
         <div className="mt-2 rounded-tw-lg bg-raised p-3.5">
           <div className="flex items-baseline justify-between">
