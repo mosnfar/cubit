@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Tokens follow Twitch's dark theme (hinted greys, purple accent, Inter). */
+@theme {
+  --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-bg: #0e0e10;
+  --color-panel: #18181b;
+  --color-raised: #1f1f23;
+  --color-hover: #26262c;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.13);
+
+  --color-fg: #efeff1;
+  --color-dim: #adadb8;
+  --color-faint: #848494;
+
+  --color-purple: #9147ff;
+  --color-purple-hover: #772ce8;
+  --color-purple-soft: #bf94ff;
+  --color-live: #eb0400;
+
+  --color-allow: #00e58a;
+  --color-flag: #ffca5f;
+  --color-remove: #ff6262;
+  --color-redact: #bf94ff;
+  --color-signal: #9147ff;
+
+  --radius-tw: 0.4rem;
+  --radius-tw-lg: 0.6rem;
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    font-size: 13px;
+  }
+  ::selection {
+    background: rgb(145 71 255 / 0.4);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.12) transparent;
+  }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Widget headers in Twitch's Mod View: small, bold, uppercase. */
+@utility label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+
+@utility hairline {
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+
+@utility checking {
+  background-image: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}

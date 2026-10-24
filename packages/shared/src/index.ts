@@ -1,0 +1,135 @@
+// Types shared by the API and the web app. Keep this file free of runtime
+// dependencies so both sides can import it without pulling anything in.
+
+export const ACTIONS = ['allow', 'flag', 'remove', 'redact'] as const;
+export type ModAction = (typeof ACTIONS)[number];
+
+export const REASONS = [
+  'ok',
+  'spam',
+  'scam',
+  'harassment',
+  'off_topic',
+  'personal_info',
+  'slur',
+] as const;
+export type ModReason = (typeof REASONS)[number];
+
+export const CONFIDENCE = ['low', 'medium', 'high'] as const;
+export type Confidence = (typeof CONFIDENCE)[number];
+
+/** What the moderation model returns for one message. */
+export interface ModDecision {
+  action: ModAction;
+  reason: ModReason;
+  /** Exact substrings of the message to hide. */
+  redact: string[];
+  confidence: Confidence;
+}
+
+export interface Verdict {
+  action: ModAction;
+  reason: ModReason;
+}
+
+export type MessageSource = 'swarm' | 'crowd';
+
+export interface ChatMessage {
+  id: string;
+  channel: string;
+  author: string;
+  text: string;
+  source: MessageSource;
+  /** Swarm persona that produced the message, if any. */
+  persona?: string;
+  /** Ground truth for swarm messages: what this community wants done. */
+  expected?: Verdict;
+  createdAt: number;
+}
+
+export type MessageStatus = 'queued' | 'done' | 'error';
+
+export interface ModeratedMessage extends ChatMessage {
+  status: MessageStatus;
+  decision?: ModDecision;
+  /** The text as shown in the channel, after redaction. */
+  display?: string;
+  latencyMs?: number;
+  /** True when the regex safety net overrode the model. */
+  safetyNet?: boolean;
+  /** Identical to a message judged moments ago: decision reused, no model call. */
+  cached?: boolean;
+  error?: string;
+  correction?: Verdict & { at: number; ruleId?: string };
+  /** Set when a correction's replay re-judged this message with new rules. */
+  rejudged?: { at: number; before: ModDecision };
+}
+
+export interface Rule {
+  id: string;
+  text: string;
+  createdAt: number;
+  fromMessageId?: string;
+  /** Corrected examples sent to Mubit because of this rule. */
+  examples: number;
+}
+
+export interface Metrics {
+  moderated: number;
+  /** Duplicates answered from the cache instead of the model. */
+  cached: number;
+  queued: number;
+  errors: number;
+  byAction: Record<ModAction, number>;
+  latencyP50: number | null;
+  latencyP95: number | null;
+  throughputPerMin: number;
+  tokensIn: number;
+  tokensOut: number;
+  /** Graded against swarm ground truth. */
+  graded: number;
+  accuracy: number | null;
+  wrongfulRemovals: number;
+  scamsCaught: number;
+  scamsTotal: number;
+  piiRedacted: number;
+  piiTotal: number;
+  corrections: number;
+  /** Corrected calls replayed through Mubit (become kept examples). */
+  trainingExamples: number;
+  rules: number;
+  /** Per-minute accuracy over the session, oldest first. */
+  accuracySeries: number[];
+}
+
+export interface SwarmState {
+  running: boolean;
+  /** Messages per second. */
+  rate: number;
+  scamWave: boolean;
+  buffered: number;
+  generating: boolean;
+}
+
+export interface LiveState {
+  messages: ModeratedMessage[];
+  rules: Rule[];
+  metrics: Metrics;
+  swarm: SwarmState;
+  task: { model: string; fingerprint: string };
+}
+
+export type StreamEvent =
+  | { type: 'message'; data: ModeratedMessage }
+  | { type: 'rule'; data: Rule }
+  | { type: 'rule-removed'; data: { id: string } }
+  | { type: 'metrics'; data: Metrics }
+  | { type: 'swarm'; data: SwarmState }
+  | { type: 'replay'; data: { ruleId: string; sent: number } };
+
+export interface CorrectionInput {
+  action: ModAction;
+  reason: ModReason;
+  /** Optional override for the rule the correction creates. */
+  ruleText?: string;
+}

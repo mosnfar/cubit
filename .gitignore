@@ -1,0 +1,14 @@
+node_modules
+dist
+.next
+*.tsbuildinfo
+.env
+.env.local
+apps/api/data/*.db*
+.DS_Store
+
+# Personal notes and raw research output stay local
+research/nightshift-mubit-handoff.md
+research/docs/
+research/results/
+.claude/

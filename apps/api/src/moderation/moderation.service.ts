@@ -1,0 +1,214 @@
+import { Injectable, Logger } from '@nestjs/common';
+import {
+  ACTIONS,
+  CONFIDENCE,
+  REASONS,
+  type ChatMessage,
+  type ModDecision,
+  type ModeratedMessage,
+} from '@quell/shared';
+import { COMMUNITY } from '../core/community';
+import { config } from '../core/config';
+import { EventsService } from '../core/events.service';
+import { MubitService } from '../core/mubit.service';
+import { StoreService } from '../core/store.service';
+import { RESPONSE_FORMAT, SYSTEM_PROMPT, TASK_MODEL } from './frozen';
+import { mask, personalInfo, prescan } from './prescan';
+
+const MAX_RULES_IN_PROMPT = 40;
+/** How long an identical message reuses an earlier decision. */
+const DUPLICATE_WINDOW_MS = 10 * 60_000;
+
+interface Judgement {
+  decision: ModDecision;
+  display: string;
+  safetyNet: boolean;
+  latencyMs: number;
+}
+
+/**
+ * Runs the moderation task. One message is one recorded call, so every call
+ * Mubit sees is a clean example of the task. A bounded worker pool keeps
+ * bursts (raids) inside the provider's concurrency limits.
+ */
+@Injectable()
+export class ModerationService {
+  private readonly log = new Logger(ModerationService.name);
+  private readonly queue: (() => Promise<void>)[] = [];
+  private active = 0;
+  /**
+   * Raids repeat the same text hundreds of times. Judging each copy would be slow,
+   * and would hand Mubit's reviewer (which reads a limited number of calls a day)
+   * identical examples. A copy seen recently under the same rules reuses the decision.
+   */
+  private readonly recentDecisions = new Map<string, { at: number; judgement: Judgement }>();
+  /** Copies arriving while the first one is still being judged wait for it. */
+  private readonly inFlight = new Map<string, Promise<Judgement>>();
+
+  constructor(
+    private readonly mubit: MubitService,
+    private readonly store: StoreService,
+    private readonly events: EventsService,
+  ) {}
+
+  get queued(): number {
+    return this.queue.length + this.active;
+  }
+
+  /** Adds a message to the channel and queues it for moderation. */
+  submit(message: ChatMessage): ModeratedMessage {
+    const m: ModeratedMessage = { ...message, status: 'queued' };
+    const key = this.duplicateKey(m.text);
+    const hit = this.recentDecisions.get(key);
+    const pending = this.inFlight.get(key);
+
+    if (hit && Date.now() - hit.at < DUPLICATE_WINDOW_MS) {
+      this.finish(m, hit.judgement, true);
+      return m;
+    }
+    this.store.putMessage(m);
+    this.events.emit({ type: 'message', data: m });
+
+    if (pending) {
+      pending.then(
+        (j) => this.finish(m, j, true),
+        (err) => this.fail(m, err),
+      );
+      return m;
+    }
+
+    const judgement = new Promise<Judgement>((resolve, reject) => {
+      this.schedule(() => this.judge(m).then(resolve, reject));
+    });
+    this.inFlight.set(key, judgement);
+    judgement
+      .then(
+        (j) => {
+          this.recentDecisions.set(key, { at: Date.now(), judgement: j });
+          this.finish(m, j, false);
+        },
+        (err) => this.fail(m, err),
+      )
+      .finally(() => this.inFlight.delete(key));
+    return m;
+  }
+
+  private finish(m: ModeratedMessage, j: Judgement, cached: boolean): void {
+    Object.assign(m, {
+      status: 'done',
+      decision: { ...j.decision, redact: [...j.decision.redact] },
+      display: j.display,
+      safetyNet: j.safetyNet,
+      latencyMs: cached ? 0 : j.latencyMs,
+      cached: cached || undefined,
+    });
+    this.store.putMessage(m);
+    this.events.emit({ type: 'message', data: m });
+  }
+
+  private fail(m: ModeratedMessage, err: unknown): void {
+    m.status = 'error';
+    m.error = err instanceof Error ? err.message : String(err);
+    this.log.warn(`moderation failed for ${m.id}: ${m.error}`);
+    this.store.putMessage(m);
+    this.events.emit({ type: 'message', data: m });
+  }
+
+  /**
+   * Re-judges a message with the current rules, as a recorded call. With the
+   * moderator's rule now in the prompt, the provider answers the way the
+   * community wants, and that answer is what Mubit keeps as a training example.
+   */
+  rejudge(m: ModeratedMessage): Promise<Judgement> {
+    return new Promise((resolve, reject) => {
+      this.schedule(() => this.judge(m).then(resolve, reject));
+    });
+  }
+
+  /** Rules are part of the key, so a new correction never serves a stale decision. */
+  private duplicateKey(text: string): string {
+    const rulesVersion = this.store.rules.map((r) => r.id).join(',');
+    return `${rulesVersion}|${text.toLowerCase().replace(/\s+/g, ' ').trim()}`;
+  }
+
+  private schedule(job: () => Promise<void>): void {
+    this.queue.push(job);
+    this.pump();
+  }
+
+  private pump(): void {
+    while (this.active < config.concurrency && this.queue.length) {
+      const job = this.queue.shift()!;
+      this.active++;
+      job().finally(() => {
+        this.active--;
+        this.pump();
+      });
+    }
+  }
+
+  private async judge(m: ChatMessage): Promise<Judgement> {
+    const detected = prescan(m.text);
+    const recent = this.store
+      .recent(12)
+      .filter((r) => r.channel === m.channel && r.id !== m.id && r.createdAt <= m.createdAt)
+      .slice(-3)
+      .map((r) => `${r.author}: ${r.text}`);
+
+    const payload = {
+      community: COMMUNITY,
+      channel: m.channel,
+      author: { name: m.author, new_account: m.persona === 'raider' || m.persona === 'scammer' },
+      recent,
+      message: m.text,
+      detected,
+      community_rules: this.store.rules.slice(-MAX_RULES_IN_PROMPT).map((r) => r.text),
+    };
+
+    const started = Date.now();
+    const res = await this.mubit.client.chat.completions.create({
+      model: TASK_MODEL,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: JSON.stringify(payload) },
+      ],
+      response_format: RESPONSE_FORMAT,
+      // Settings don't split a Mubit task; this keeps a reasoning model fast enough for chat.
+      reasoning_effort: 'none' as 'low',
+    });
+    const latencyMs = Date.now() - started;
+    this.store.bump('tokensIn', res.usage?.prompt_tokens ?? 0);
+    this.store.bump('tokensOut', res.usage?.completion_tokens ?? 0);
+
+    const decision = parseDecision(res.choices[0]?.message?.content ?? '', m.text);
+
+    // Safety net: personal information is never shown, whatever the model said.
+    const pii = personalInfo(detected).filter((s) => m.text.includes(s));
+    let safetyNet = false;
+    if (pii.length && decision.action === 'allow') {
+      decision.action = 'redact';
+      decision.reason = 'personal_info';
+      safetyNet = true;
+    }
+    if (decision.action === 'redact') {
+      decision.redact = [...new Set([...decision.redact, ...pii])];
+    }
+
+    const display = decision.action === 'redact' ? mask(m.text, decision.redact) : m.text;
+    return { decision, display, safetyNet, latencyMs };
+  }
+}
+
+function parseDecision(raw: string, text: string): ModDecision {
+  try {
+    const d = JSON.parse(raw) as Partial<ModDecision>;
+    const action = ACTIONS.includes(d.action as never) ? d.action! : 'flag';
+    const reason = REASONS.includes(d.reason as never) ? d.reason! : action === 'allow' ? 'ok' : 'spam';
+    const confidence = CONFIDENCE.includes(d.confidence as never) ? d.confidence! : 'low';
+    // Only keep spans that really occur in the message.
+    const redact = Array.isArray(d.redact) ? d.redact.filter((s) => typeof s === 'string' && text.includes(s)) : [];
+    return { action, reason, redact, confidence };
+  } catch {
+    return { action: 'flag', reason: 'spam', redact: [], confidence: 'low' };
+  }
+}
