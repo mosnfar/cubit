@@ -131,7 +131,7 @@ In live test sessions:
 - [Documentation site](docs/docs-site.md) — Fumadocs development, static builds and GitHub Pages deployment.
 
 Run `pnpm dev:docs` for the documentation site on http://localhost:3200, or
-`pnpm build:docs` to export it to `apps/docs/out`.
+`pnpm build:docs` to export it to `docs/out`.
 
 ## Getting started
 
@@ -169,9 +169,8 @@ house-rule messages, follow-up messages after correction, a scam wave and a raid
 ```
 apps/api         NestJS API: moderation, corrections, benchmark, simulated chat
 apps/web         Next.js app: moderator view at /, viewer page at /join
-apps/docs        Fumadocs site, exported to GitHub Pages
 packages/shared  Types shared by the API and the web app
-docs             Documentation content, README images and showcase pages
+docs             Markdown guides, Fumadocs app, README images and showcase pages
 scripts          Screenshot tooling
 ```
 
