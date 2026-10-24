@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import { Pause, Play, Siren, Waves } from 'lucide-react';
 import type { SwarmState } from '@quell/shared';
 import { api } from '@/lib/api';
+import { DemoMenu } from './DemoMenu';
+import { JoinQR } from './JoinQR';
 import { Button } from './primitives';
 
 const RATES = [1, 3, 8, 20];
@@ -31,6 +33,9 @@ export function TopBar({
       </div>
 
       <div className="ml-auto flex items-center gap-1.5">
+        <JoinQR />
+        <DemoMenu onNote={onNote} />
+        <span className="mx-1 h-5 w-px bg-line-strong" />
         <Button
           variant={running ? 'secondary' : 'primary'}
           pill

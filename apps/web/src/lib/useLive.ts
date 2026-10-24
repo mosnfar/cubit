@@ -56,6 +56,9 @@ function reduce(s: Live, a: Action): Live {
     }
     case 'eval':
       return { ...s, evaluation: a.data };
+    case 'reset':
+      // The fresh snapshot arrives as an 'init' right after.
+      return { ...s, order: [], byId: {}, rules: [], lastReplay: null };
     case 'connected':
       return { ...s, connected: a.value };
     case 'message': {
@@ -101,9 +104,15 @@ export function useLive(): Live {
       source = new EventSource(`${apiBase()}/stream`);
       source.onopen = () => dispatch({ type: 'connected', value: true });
       source.onerror = () => dispatch({ type: 'connected', value: false });
-      for (const type of ['message', 'rule', 'rule-removed', 'metrics', 'swarm', 'replay', 'eval'] as const) {
+      for (const type of ['message', 'rule', 'rule-removed', 'metrics', 'swarm', 'replay', 'eval', 'reset'] as const) {
         source.addEventListener(type, (e) => {
           dispatch({ type, data: JSON.parse((e as MessageEvent).data) } as StreamEvent);
+          if (type === 'reset') {
+            api
+              .state()
+              .then((s) => !cancelled && dispatch({ type: 'init', state: s }))
+              .catch(() => undefined);
+          }
         });
       }
     };

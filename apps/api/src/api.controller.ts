@@ -13,6 +13,7 @@ import {
   Sse,
 } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
+import { networkInterfaces } from 'node:os';
 import { RegExpMatcher, englishDataset, englishRecommendedTransformers } from 'obscenity';
 import { Observable, map, merge, interval } from 'rxjs';
 import type { CorrectionInput, LiveState, SwarmState } from '@quell/shared';
@@ -110,6 +111,30 @@ export class ApiController {
   @Post('eval')
   evaluate() {
     return this.evals.start();
+  }
+
+  /** Addresses other devices on the same network can use to reach this laptop. */
+  @Get('info')
+  info() {
+    const lan = Object.values(networkInterfaces())
+      .flat()
+      .filter((a) => a && a.family === 'IPv4' && !a.internal)
+      .map((a) => a!.address);
+    return { lan };
+  }
+
+  /** Scripted demo beats: 'teach' posts known mistakes, 'again' posts new look-alikes. */
+  @Post('demo/:stage')
+  demo(@Param('stage') stage: string) {
+    if (stage === 'reset') {
+      this.swarm.update({ running: false, scamWave: false });
+      this.store.reset();
+      this.moderation.clearCache();
+      this.events.emit({ type: 'reset', data: {} });
+      return { ok: true };
+    }
+    if (stage !== 'teach' && stage !== 'again') throw new BadRequestException('Unknown demo stage.');
+    return { posted: this.swarm.demo(stage) };
   }
 
   @Post('swarm/raid')

@@ -99,6 +99,15 @@ export class StoreService {
     return this.rules.length !== before;
   }
 
+  /** Clears chat, rules and counters for a fresh demo. The Mubit task lock is untouched. */
+  reset(): void {
+    this.db.exec('DELETE FROM messages; DELETE FROM rules; DELETE FROM counters;');
+    this.messages.clear();
+    this.order = [];
+    this.rules = [];
+    for (const name of Object.keys(this.counters) as (keyof StoreService['counters'])[]) this.counters[name] = 0;
+  }
+
   bump(name: keyof StoreService['counters'], by = 1): void {
     this.counters[name] += by;
     this.saveCounter.run(name, this.counters[name]);

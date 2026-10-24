@@ -154,6 +154,7 @@ export interface LiveState {
 }
 
 export type StreamEvent =
+  | { type: 'reset'; data: Record<string, never> }
   | { type: 'eval'; data: EvalRun }
   | { type: 'message'; data: ModeratedMessage }
   | { type: 'rule'; data: Rule }

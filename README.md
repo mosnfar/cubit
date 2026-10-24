@@ -33,8 +33,13 @@ pnpm dev                                  # API on :4000, web on :3100
 
 ## Two-minute demo
 
-1. **Go live** at 3/s. The channel fills; agreement sits around 90%.
-2. Point at a mistake: trolling allowed, or a harmless dev joke ("kill -9 the intern's process") flagged.
-3. Correct it in **Review**: edit the rule, **Teach the model**. Watch the rule appear, the training counter climb, and similar messages re-judged.
-4. **New scam wave** for fresh scams; **Raid** for a 150-message burst cleared in seconds.
-5. Open the Mubit console: the `moderation_decision` task, its kept examples, and the adapter's progress.
+Everything is on the **Demo** menu in the top bar. Start from **Reset demo**.
+
+1. **Go live.** Chat runs at 2 messages a second.
+2. **Post the mistakes.** Four messages break Shipyard's house rules (troll bait, selling tickets, recruiting, self-promo). A generic model can't know those rules, and allows all four (4/4 in every test run).
+3. Correct each one: hover the chat line, pick the action, edit the rule, **Teach the model**.
+4. **Post look-alikes.** Four new messages of the same kinds now come out right (4/4 in testing).
+5. **Scam wave** and **Raid** (150 messages cleared in seconds; copies are answered from the duplicate cache).
+6. **Benchmark → Run again** for the held-out numbers, then the Mubit console for the task and its kept examples.
+
+**Scan to chat** shows a QR code for the phone page at the laptop's network address, so judges can post into chat. Phones must be on the same Wi-Fi.

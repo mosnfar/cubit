@@ -8,6 +8,7 @@ import { MubitService } from '../core/mubit.service';
 import { StoreService } from '../core/store.service';
 import { ModerationService } from '../moderation/moderation.service';
 import { CORPUS } from './corpus';
+import { DEMO_BEATS, DEMO_GAP_MS } from './demo';
 import { PERSONAS, SCAM_WAVE, type Persona } from './personas';
 
 const TICK_MS = 100;
@@ -87,6 +88,27 @@ export class SwarmService implements OnModuleDestroy {
     }
     this.broadcast();
     return this.snapshot;
+  }
+
+  /** Posts the scripted demo messages: the mistakes to teach, or their look-alikes. */
+  demo(stage: 'teach' | 'again'): number {
+    DEMO_BEATS.forEach((beat, i) => {
+      const line = stage === 'teach' ? beat.teach : beat.again;
+      setTimeout(() => {
+        this.used.add(normalise(line.text));
+        this.moderation.submit({
+          id: randomUUID(),
+          channel: CHANNEL,
+          author: line.author,
+          text: line.text,
+          source: 'swarm',
+          persona: 'demo',
+          expected: beat.expected,
+          createdAt: Date.now(),
+        });
+      }, i * DEMO_GAP_MS);
+    });
+    return DEMO_BEATS.length;
   }
 
   /**

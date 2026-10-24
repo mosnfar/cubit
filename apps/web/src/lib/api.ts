@@ -29,6 +29,8 @@ export const api = {
   swarm: (patch: Partial<Pick<SwarmState, 'running' | 'rate' | 'scamWave'>>) =>
     call<SwarmState>('/swarm', { method: 'POST', body: JSON.stringify(patch) }),
   evaluate: () => call<EvalRun>('/eval', { method: 'POST' }),
+  demo: (stage: 'teach' | 'again' | 'reset') => call<{ posted?: number }>(`/demo/${stage}`, { method: 'POST' }),
+  info: () => call<{ lan: string[] }>('/info'),
   raid: (count = 150) => call<{ posted: number }>('/swarm/raid', { method: 'POST', body: JSON.stringify({ count }) }),
   ingest: (author: string, text: string) =>
     call<{ id: string }>('/ingest', { method: 'POST', body: JSON.stringify({ author, text }) }),

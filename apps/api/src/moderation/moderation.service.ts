@@ -126,6 +126,10 @@ export class ModerationService {
     });
   }
 
+  clearCache(): void {
+    this.recentDecisions.clear();
+  }
+
   /** Rules are part of the key, so a new correction never serves a stale decision. */
   private duplicateKey(text: string): string {
     const rulesVersion = this.store.rules.map((r) => r.id).join(',');
