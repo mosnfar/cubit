@@ -21,6 +21,12 @@ on:
 permissions:
   contents: read
 
+# The site is published from the team repo, which has Pages enabled. Copies of the
+# repo (such as a personal mirror) still build and type-check the docs, but skip
+# publishing, which would fail without Pages.
+env:
+  PUBLISH: ${{ github.event_name != 'pull_request' && github.repository == 'mosnfar/quell' }}
+
 concurrency:
   group: docs-${{ github.ref }}
   cancel-in-progress: false
@@ -44,22 +50,22 @@ jobs:
         run: pnpm install --filter @quell/docs... --frozen-lockfile
       - name: Configure Pages
         id: pages
-        if: github.event_name != 'pull_request'
+        if: env.PUBLISH == 'true'
         uses: actions/configure-pages@v5
       - name: Check types
         run: pnpm --filter @quell/docs typecheck
       - name: Export documentation
         run: pnpm build:docs
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ github.event_name == 'pull_request' && format('/{0}', github.event.repository.name) || steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_BASE_PATH: ${{ env.PUBLISH == 'true' && steps.pages.outputs.base_path || format('/{0}', github.event.repository.name) }}
       - name: Upload Pages artifact
-        if: github.event_name != 'pull_request'
+        if: env.PUBLISH == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs/out
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository == 'mosnfar/quell'
     needs: build
     runs-on: ubuntu-latest
     permissions:
