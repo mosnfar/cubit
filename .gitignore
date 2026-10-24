@@ -3,7 +3,7 @@ node_modules
 dist
 .next
 .source
-apps/docs/out
+docs/out
 *.tsbuildinfo
 .env
 .env.local

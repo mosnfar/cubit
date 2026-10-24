@@ -5,7 +5,7 @@ description: Run, build, preview, and publish the Quell documentation site.
 
 ## Content and app structure
 
-The canonical documentation content is the Markdown in `docs/*.md`. Edit those files to update published guides; the Fumadocs app under `apps/docs` presents them. Add a `title` and `description` in YAML frontmatter to each page, then update `docs/meta.json` to set its navigation order. Fumadocs supplies the page title, so Markdown pages should not add a duplicate top-level heading.
+The Markdown guides and Fumadocs app live together in `docs/`. Edit `docs/*.md` to update published guides; the app code is in `docs/src`. Add a `title` and `description` in YAML frontmatter to each page, then update `docs/meta.json` to set its navigation order. The content collection includes only the top-level Markdown files and `meta.json`, keeping application configuration and generated files out of the page tree. Fumadocs supplies the page title, so Markdown pages should not add a duplicate top-level heading.
 
 The documentation app uses Next.js 16 and is isolated from Quell's existing Next.js 15 web app. Its static export contains documentation only: it does not deploy the API, web application, a backend service, or a Mubit API key.
 
@@ -23,7 +23,7 @@ Starts the documentation development server on port 3200.
 pnpm build:docs
 ```
 
-Builds a static export in `apps/docs/out`.
+Builds a static export in `docs/out`.
 
 ```sh
 pnpm --filter @quell/docs typecheck
@@ -41,7 +41,7 @@ The `NEXT_PUBLIC_BASE_PATH` setting defaults to an empty value for local develop
 
 ## GitHub Pages workflow
 
-The workflow is `.github/workflows/docs.yml`, named **Deploy documentation**. A push to `main` that changes documentation-site inputs triggers a build and deployment. A pull request runs the build only; it does not publish. `workflow_dispatch` permits a manual run. The workflow builds with Node.js 24 and pnpm 10.12.4, then uploads only `apps/docs/out` as the Pages artifact. Deployment uses the `github-pages` environment and GitHub's Pages artifact flow.
+The workflow is `.github/workflows/docs.yml`, named **Deploy documentation**. A push to `main` that changes documentation-site inputs triggers a build and deployment. A pull request runs the build only; it does not publish. `workflow_dispatch` permits a manual run. The workflow builds with Node.js 24 and pnpm 10.12.4, then uploads only `docs/out` as the Pages artifact. Deployment uses the `github-pages` environment and GitHub's Pages artifact flow.
 
 The build job needs `contents: read` and `pages: read`; the deploy job needs `pages: write` and `id-token: write`. Configure the repository's Pages source to **GitHub Actions**. The workflow does not require the Mubit secret because it builds static documentation content.
 
